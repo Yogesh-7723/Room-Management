@@ -1,0 +1,400 @@
+{% load static %}
+<html>
+<head>
+     <title>Partners</title>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Shrikhand&display=swap" rel="stylesheet">
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Mate+SC&display=swap" rel="stylesheet">
+     <link rel="stylesheet" href="{% static 'riot-slider.min.css' %}" />
+     <script src="{% static 'riot-slider.min.js' %}"></script>
+<style>
+     
+body 
+{
+     margin:0;
+     padding: 0;
+}
+
+header
+{
+
+width: 100%;
+background-color: yellow;
+height:100px;
+
+
+}
+
+#pro_name
+{
+float: left;
+font-family:"shrikhand";
+background-color:yellow;
+font-size:30px;
+text-align:center;
+width:70%;
+height: 60px;
+
+}
+h2
+{
+     margin-left: 580px;
+     width: 120px;
+     border:2px solid black;
+     font-size: 30px;
+     text-align: center;
+     margin-top: 100px;
+     background-color: aqua;
+}
+#logo
+{
+     float:left;
+     width:25%;
+     margin-right: 30px;
+     height: 100px;
+
+}
+#logo img
+{
+     height: 100%;
+     width: 90%;
+}
+footer
+{
+background-color:black;
+border:2px solid white;
+color:aliceblue;
+height:330px;
+
+}
+nav
+{
+
+background-color:black;
+width:100%;
+height:30px;
+text-align: end;
+}
+nav li
+{
+font-family: 'Mate SC', serif;
+display:inline;
+font-size:20px;
+margin-left:20px;
+
+
+
+}
+
+p
+{
+font-family:"shrikhand";
+font-size:12px;
+text-align:center;
+}
+
+#a
+{
+float:left;
+border:2px solid black;
+width:30%;
+height:500px;
+}
+#b
+{
+
+border:2px solid black;
+padding: 4px;
+width:94%;
+height:150px;
+
+}
+#c
+{
+border:2px solid black;
+width:30%;
+height:500px;
+
+}
+.x
+{
+float:left;
+font-size:15px;
+width:27%;
+height: 200px;
+margin: 25px;
+margin-left: 30px;
+
+}
+.y
+{
+color:black;
+text-decoration:none;
+text-align:center;
+}
+.ds
+{
+     color:black;
+     text-decoration:none; 
+     font-size: 15px;
+     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; 
+}
+.z
+{
+color:White;
+float:left;
+text-decoration:none;
+}
+#main_foot 
+{
+     width: 100%;
+     height:20px;
+}
+#mq 
+{
+     background-color:yellow;
+     color:red;
+     font-size:30px;
+     height: 40px;
+     width:100%;  
+     margin-top:10px;
+}
+ul li 
+{
+     
+     display:inline-block;
+}
+#dev_foot,#con_foot
+{
+     margin: 20px;
+     text-align: center;
+}
+#dev_foot 
+{
+     margin-top: 50px;
+}
+
+#fd 
+{
+   margin-left: 600px;
+   font-size: 20px;
+   margin-top: 10px;
+}
+     
+.fd_main 
+{
+     height: 30px;
+     width: 100%;
+     background-color: black;
+     color: aliceblue;
+}
+#fd li a 
+{
+     margin-left: 4px;
+}
+/*----member class start----*/
+.gopalp
+{
+     float:left;
+     width:15%;
+     height:220px;
+     margin-top:50px;
+     margin-left:50px;
+     border:2px solid black;
+}
+.yogesh 
+{
+     float:left;
+     width:15%;
+     height:220px;
+     margin-top:50px;
+     margin-left:160px;
+     border:2px solid black;
+}
+.goutam 
+{
+     float:left;
+     width:15%;
+     height:220px;
+     margin-top:50px;
+     margin-left:50px;
+     border:2px solid black;
+}
+.rohit 
+{
+    float:left;
+    width:15%;
+    height:220px;
+    margin-top:50px;
+    margin-left:50px;
+    border:2px solid black;
+}
+.lucky 
+{
+     float:left;
+     width:15%;
+     height:220px;
+     margin-top:50px;
+     margin-left:50px;
+     border:2px solid black;
+}
+.pramod
+{
+     float:left;
+     width:15%;
+     height:220px;
+     margin-top:50px;
+     margin-left:160px;
+     border:2px solid black;
+}
+.sudhir 
+{
+    float:left;
+    width:15%;
+    height:220px;
+    margin-top:50px;
+    margin-left:50px;
+    border:2px solid black;
+}
+.head 
+{
+     height: 90px;
+}
+/*----member class end----*/
+/*----slider css start----*/
+.mainContainer {
+     margin-left: 300px;
+     width: 100%;
+     max-width: 700px;
+     margin-top: 50px;
+   
+   }
+   h1 
+   {
+     text-decoration:underline;
+   }
+   
+ </style>
+
+  </head>
+     <body >
+          
+          <header>
+               <div class="head">
+                    <div id="logo" ><img src="{% static 'images\contanering.png' %}" ></div>
+                    
+                    <div id="pro_name"><h3> Partners Group Management</h3></div>
+                    
+               </div>
+       <nav>
+           <ul>
+              <li><a href='#' target='' class='z'>Home</a></li>
+              <li><a href='/data/' target='' class='z'>Manage</a></li>
+              <li><a href='/menu/' target='' class='z'>Menu Table</a></li>
+              <li><a href='/table/' target='' class='z'style='margin-right:20px'>All Entry</a></li>
+              
+           </ul>
+            </nav>
+          </header>
+            <div class="mainContainer">
+               <h1>Memory Never Die :-</h1>
+               <!-- create a ul tag (unordered list) with a class of "riot-slider'" -->
+               <ul class="riot-slider">
+                 <!-- each slide is an li tag (list item) -->
+                 <li><img src="{% static 'images/blue-jay.jpg' %}" /></li>
+                 <li><img src="{% static 'images/squirrel.jpg' %}" /></li>
+                 <li><img src="{% static 'images/port-au-prince-haiti.jpg' %}" /></li>
+                 <li><img src="{% static 'images/pennsylvania-landscape.jpg' %}" /></li>
+               
+               </ul>
+          </div>
+          <h2>Member</h2>
+          <div style='width:100%;height:280px;margin-top:30px'>
+          <div class="yogesh" >
+            
+            <img src="{% static 'images\yogi_img.jpeg' %}" alt=' ' id='b'>
+             <p><a href="#" target=" " class='y'>Yogesh Yadav</a></p>
+             <p><a href="#" target=" " class='ds'>Member</a></p>
+         </div>
+         <div class="goutam">
+            
+            <img src="{% static 'images\goutam.jpg' %}" alt=' ' id='b'>
+            <p><a href="#" target=" " class='y'>Goutam Yadav</a></p>
+            <p><a href="#" target=" " class='ds'>Bill Management</a></p>
+         </div>
+         <div class="gopalp">
+            
+             <img src="{% static 'images\gopal1.jpeg' %}" alt=' ' id='b'>
+              <p><a href="#" target=" " class='y'>Gopal Prajapat</a></p>
+              <p><a href="#" target=" " class='ds'>Cleaning Menegment</a></p>
+         </div>
+         <div class="lucky">
+            
+          <img src="{% static 'images\lucky1.jpg' %}" alt=' ' id='b'>
+          <p><a href="#" target=" " class='y'>Lucky Verma</a></p>
+          <p><a href="#" target=" " class='ds'>Grocery Management</a></p>
+          </div>
+     </div>
+     
+     <div style='width:100%;height:300px'>
+          <div class="pramod">
+            
+               <img src="{% static 'images\gopalg.jpg' %}" alt=' ' id='b'>
+               <p><a href="#" target=" " class='y'>Pramod Gavli</a></p>
+               <p><a href="#" target=" " class='ds'>Member</a></p>
+            </div>
+            <div class="rohit">
+               
+                <img src="{% static 'images\rohit.jpg' %}" alt=' ' id='b'>
+                 <p><a href="#" target=" " class='y'>Rohit Verma</a></p>
+                 <p><a href="#" target=" " class='ds'>Rent Management</a></p>
+            </div>
+            <div class="sudhir">
+               
+               <img src="{% static 'images\sudhir.jpg' %}" alt=' ' id='b'>
+               <p><a href="#" target=" " class='y'>Sudhir Yadav</a></p>
+               <p><a href="#" target=" " class='ds'>Member</a></p>
+            </div>
+          
+         </div>
+       
+         
+        <footer>
+          <div id='main_foot'>
+               <div class='x'>
+                       <div style='font-size:20px;text-align:center'>Contact Us</div>
+               <div id="con_foot">Location<br>Khandwa naka indore M.P.<br><br>
+               Mobile no<br>7723815178<br><br>
+               gmail id<br>yogeshyadav7723@gmail.com
+               </div>
+               </div>
+               <div class='x'><div style='font-size:20px;text-align:center'>Developer</div>
+               <div id="dev_foot"> My name is Yogesh yadav from<br> khargone distric M.P.
+                I am  purshing<br> my engineering by B.tech Electronics and
+                communication branch from<br> svce indore. 
+               </div>        
+                </div>
+               <div class='x'><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2809.3234892625574!2d75.87563517115483!3d22.67390227581232!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3962fc95e4566a19%3A0x721053fbd22a72e4!2z4KS44KSC4KSkIOCkqOCkl-CksCDgpI_gpLXgpYfgpKjgpY3gpK_gpYIsIOCkuOCkguCkpCDgpKjgpJfgpLAsIOCkh-CkqOCljeCkpuCljOCksCwg4KSu4KSn4KWN4KSvIOCkquCljeCksOCkpuClh-CktiA0NTIwMjA!5e0!3m2!1shi!2sin!4v1681233279667!5m2!1shi!2sin"
+                       
+                    style="border:0;width:275px;height:200px" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade ">
+               </iframe>
+               </div>
+               <marquee scrollamount='20' id="mq">Welcome In Our Room</marquee>
+              <div class="fd_main">
+              <ul id="fd">
+               <li><a href='#' target='' class='z' >Terms of Service |</a></li>
+               <li><a href='#' target='' class='z' >Privacy Policy |</a></li>
+               <li><a href='menu_table.html' target='' class='z'>Returnd Policy |</a></li>
+               <li><a href='#' target='' class='z' >Accessibility Policy </a></li>
+               </ul>
+          </div>
+          </div>
+      </footer>
+      
+      
+</body> 
+</html>
