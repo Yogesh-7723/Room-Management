@@ -1,8 +1,7 @@
 {% load static %}
 <html>
 <head>
-<style>
-  
+       
      
 body 
 {
@@ -232,8 +231,6 @@ ul li
    {
      font-size:25px;
    }
- </style>
-
   </head>
      <body >
           
@@ -249,7 +246,7 @@ ul li
               <li><a href='/index/' target='' class='z'>Home</a></li>
               <li><a href='/data/' target='' class='z'>Manage</a></li>
               <li><a href='/menu/' target='' class='z'>Menu Table</a></li>
-              <li><a href='/table/' target='' class='z'style='margin-right:20px'>All Entry</a></li>
+              <li><a href='/all_entry/' target='' class='z'style='margin-right:20px'>All Entry</a></li>
               
            </ul>
             </nav>
@@ -260,22 +257,25 @@ ul li
           <table border='2px' cellspacing='' cellpadding='' width="100%" >
             <tr>
                 
-                <th>Name</th>
+                <th>Member Name</th>
                 <th>Product</th>
                 <th>Price</th>
                 <th>Date</th>
-                <th>Action</th>
+                <th>Edit</th>
             </tr>
             <tr>
                {% for i in data %}
-               <td>{{i.ref_user}}</td>
-               <td>{{i.pro_name}}</td>
-               <td>{{i.pro_price}}</td>
-               <td>{{i.buy_date}}</td>
-               <td ><a href="/delete/{{i.id}}">Delete</td>
+               <td>{{i.user}}</td>
+               <td>{{i.item}}</td>
+               <td>{{i.price}}</td>
+               <td>{{i.date}}</td>
+               <td ><a href="/Update/{{i.id}}">Update</td>
             </tr>
             {% endfor %}
-              
+            <tr>
+               <th colspan='2'>Total Amount</th>
+               <th>{{total.total_price}}</th>
+            </tr>
             </table>
           
      

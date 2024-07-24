@@ -1,100 +1,37 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  background-color: black;
-}
+{% extends "base.html" %}
 
-* {
-  box-sizing: border-box;
-}
 
-/* Add padding to containers */
-.container {
-  padding: 16px;
-  background-color: white;
-}
 
-/* Full-width input fields */
-input[type=text], input[type=number] {
-  width: 100%;
-  padding: 15px;
-  margin: 5px 0 22px 0;
-  display: inline-block;
-  border: none;
-  background: #f1f1f1;
-}
+{% block contaner %}
 
-input[type=text]:focus, input[type=number]:focus {
-  background-color: #ddd;
-  outline: none;
-}
+<div class="container">
+<h1>Management :</h1>
+<span>Please enter your product and price carefully</span>
+<hr>
+<form action='/add_product/' method='post'>
+  {% csrf_token %}
+<label for="user"><b>Member Name</b></label><br><br>
+<select name='user',id='user' style='font-size:18px;'>
+  <option value=''>select member name</option>
+  {% for i in u_data %}
+  <option value='{{i.username}}'>{{i.username}}</option>
+  {% endfor %}
+</select><br><br>
 
-/* Overwrite default styles of hr */
-hr {
-  border: 1px solid #f1f1f1;
-  margin-bottom: 25px;
-}
 
-/* Set a style for the submit button */
-.registerbtn {
-  background-color: #04AA6D;
-  color: white;
-  padding: 16px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-  opacity: 0.9;
-}
+<label for="item"><b>Product Name</b></label>
+<input type="text" placeholder="Enter Product Name" name="item" id="item" required>
 
-.registerbtn:hover {
-  opacity: 1;
-}
+<label for="price"><b>Product Price</b></label>
+<input type="text" placeholder="Enter Product Price" name="price" id="price" required>
 
-/* Add a blue text color to links */
-a {
-  color: dodgerblue;
-}
 
-/* Set a grey background color and center the text of the "sign in" section */
-.signin {
-  background-color: #f1f1f1;
-  text-align: center;
-}
-</style>
-</head>
-<body>
+<hr>
+<input type='checkbox' name='terms' required><span>By entering an product you agree to our <a href="#">Terms & Privacy</a>.</span>
 
-    <form action='/product/' method='post'>
-      {% csrf_token %}
-  <div class="container">
-    <h1>Management</h1>
-    <p>Please enter your product and price carefully</p>
-    <hr>
+<button type="submit" class="registerbtn ">Add Product</button>
+</div>
 
-    <label for="name"><b>Name</b></label>
-    <input type="text" placeholder="Enter Your  Name" name="name" id="name" >
-
-    
-    <label for="product"><b>Product Name</b></label>
-    <input type="text" placeholder="Enter Product Name" name="product" id="product" required>
-
-    <label for="amount"><b>Product Price</b></label>
-    <input type="number" placeholder="Enter Product Price" name="amount" id="amount" required>
-
-    <label for="date"><b>Month</b></label>
-    <input type="date" placeholder="Enter Month" name="date" id="date" required>
-    <hr>
-    <p>By entering an product you agree to our <a href="#">Terms & Privacy</a>.</p>
-
-    <button type="submit" class="registerbtn ">Add Product</button>
-  </div>
-  
 </form>
-
-</body>
-</html>
+</div>
+{% endblock %}

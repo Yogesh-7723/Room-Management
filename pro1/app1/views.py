@@ -1,66 +1,83 @@
 from django.shortcuts import render,redirect
 from app1.models import *
+from .models import Product
+from django.db.models import Sum
+from django.contrib.auth.models import User
+from django.contrib.auth import  logout, authenticate, login
 from django.http import HttpResponse
 from django.contrib import messages
-from django.contrib.auth.hashers import make_password,check_password
+from django.contrib.auth.hashers import make_password
 
 # Create your views here.
-def entry(request):
-    return  render(request,'first.html')
-
 def index(request):
     return render(request,'index.html')
 
+def base(request):
+    return render(request,'base.html')
+
+def entry(request): 
+    if request.method == 'POST':
+        name = request.POST['username']
+        pwd = request.POST.get('password')
+        print(name,pwd)
+        user = authenticate(username=name,password=pwd)
+        print(user)
+        if user is not None:
+            login(request,user)
+            print("login Successfull")
+            return redirect('/')
+        else:
+            messages.error(request,"Invalid username and password")
+            return redirect('/sign_in/')
+    return  render(request,'first.html')
+
+def log_out(request,qk):
+    user = User.objects.get(id=qk)
+    if user is not None:
+        logout(request)
+    return redirect('/sign_in/')
+
+
 def data(request):
-    return render(request,'data.html')
+    if request.method == 'POST':
+        user = request.POST['user']
+        item = request.POST['item']
+        price = request.POST['price']
+        if user !='' and item != '' and price!='':
+            print("Enter Every Values")
+        Product.objects.create(user=user,item=item,price=price)
+        messages.success(request,"Item Successfully Add !")
+        return redirect('/add_product/')
+    
+    u_data = User.objects.all()
+    return render(request,'data.html',{'u_data':u_data})
 
 def menu(request):
     return render(request,"menu.html")
 
 def signup(request):
-    return render(request,'signup.html')
-
-def ragistration(request):
     if request.method == 'POST':
-        mem_name = request.POST['mem_name']
-        phone = request.POST['phone']
+        username = request.POST['username']
         email = request.POST['email']
-        password = make_password(request.POST['password'])
-        if User.objects.filter(mem_name=mem_name).exists():
-            return HttpResponse('Usr Name Already Exists')
+        password1 = request.POST['password1']
+        password2 = request.POST['password2']
+        if password1 != password2:
+            messages.error(request,"Password Not Match ")
+            return redirect('/signup/')
         
-        elif User.objects.filter(email=email).exists():
-            return HttpResponse('Email Already Exists')
-        
-        
-        elif User.objects.filter(password=password).exists():
-            return HttpResponse('Password Already Exists')    
-        
+        elif User.objects.filter(username=username).exists():
+            print("user already exists")
+            return redirect('/signup/')
         else:
-            User.objects.create(mem_name=mem_name,email=email,
-                        phone=phone,password=password)
-            messages.success(request,'Ragistration Successfull')
-            return redirect('/')
-        
+            pwd = make_password(password1)
+            User.objects.create(username=username,email=email,password=pwd)
+            print("successfull create account")
+            messages.success(request,"Congrates Membership Successfull")
+            return redirect('/signup/')
+    else:
+        return render(request,'signup.html')
 
-def product(request):
-    if request.method == 'POST':
-        name = request.POST['name']
-        product = request.POST['product']
-        amount = request.POST['amount']
-        date = request.POST.get('date')
-        if True:
-            Purches.objects.create(name=name,product=product,amount=amount,date=date)
-            return HttpResponse("Successfully")
-        
-        
-def table(request):
-    data = Purches.objects.all()
-    return render(request,'table.html',{"data":data})
-
-
-
-def delete(requered,pk):
-    Purches.objects.get(id=pk).delete()
-    return redirect("/table/")
-
+def all_product(request):
+    data = Product.objects.all()
+    total = Product.objects.aggregate(total_price=Sum('price'))
+    return render(request,'table.html',{'data':data,'total':total})
