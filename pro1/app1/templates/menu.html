@@ -1,263 +1,122 @@
+{% extends "base.html" %}
 {% load static %}
-<html>
-   <link rel="preconnect" href="https://fonts.googleapis.com">
-   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-   <link href="https://fonts.googleapis.com/css2?family=Shrikhand&display=swap" rel="stylesheet">
-   <link rel="preconnect" href="https://fonts.googleapis.com">
-   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-   <link href="https://fonts.googleapis.com/css2?family=Mate+SC&display=swap" rel="stylesheet">
-   
-<head>
-<style>
-     
-body 
-{
-     margin:0;
-     padding: 0;
+{% block style %}
+
+.menu_list {
+     width:100%;
+     margin-top:5rem;
+     margin-bottom:10rem;
+     display:flex;
+     justify-content:center;
 }
 
-header
-{
-
-width: 100%;
-background-color: yellow;
-height:100px;
-
+.active {
+     background-color:blue;
+     color:white;
 
 }
-
-#pro_name
-{
-float: left;
-font-family:"shrikhand";
-background-color:yellow;
-font-size:30px;
-text-align:center;
-width:70%;
-height: 60px;
+table {
+     width:40%;
+     margin:2rem;
+     font-size:20px;
 
 }
-h2
-{
-     margin-left: 580px;
-     width: 120px;
-     border:2px solid black;
-     font-size: 30px;
-     text-align: center;
-     margin-top: 100px;
-     background-color: aqua;
+table tr th {
+     align-item:center;
 }
-#logo
-{
-     float:left;
-     width:25%;
-     margin-right: 30px;
-     height: 100px;
-
-}
-#logo img
-{
-     height: 100%;
-     width: 90%;
-}
-footer
-{
-background-color:black;
-border:2px solid white;
-color:aliceblue;
-height:330px;
-
-}
-nav
-{
-
-background-color:black;
-width:100%;
-height:30px;
-text-align: end;
-}
-nav li
-{
-font-family: 'Mate SC', serif;
-display:inline;
-font-size:20px;
-margin-left:20px;
-
-
-
+table tr td{
+     align-item:center;
+     padding:5px;
 }
 
-p
-{
-font-family:"shrikhand";
-font-size:12px;
-text-align:center;
-}
-
-#a
-{
-float:left;
-border:2px solid black;
-width:30%;
-height:500px;
-}
-#b
-{
-
-border:2px solid black;
-padding: 4px;
-width:94%;
-height:150px;
-
-}
-#c
-{
-border:2px solid black;
-width:30%;
-height:500px;
-
-}
-.x
-{
-float:left;
-font-size:15px;
-width:27%;
-height: 200px;
-margin: 25px;
-margin-left: 30px;
-
-}
-.y
-{
-color:black;
-text-decoration:none;
-text-align:center;
-}
-.ds
-{
-     color:black;
-     text-decoration:none; 
-     font-size: 15px;
-     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; 
-}
-.z
-{
-color:White;
-float:left;
-text-decoration:none;
-}
-#main_foot 
-{
-     width: 100%;
-     height:20px;
-}
-#mq 
-{
-     background-color:yellow;
-     color:red;
-     font-size:30px;
-     height: 40px;
-     width:100%;  
-     margin-top:10px;
-}
-ul li 
-{
-     
-     display:inline-block;
-}
-#dev_foot,#con_foot
-{
-     margin: 20px;
-     text-align: center;
-}
-#dev_foot 
-{
-     margin-top: 50px;
-}
-
-#fd 
-{
-   margin-left: 600px;
-   font-size: 20px;
-   margin-top: 10px;
-}
-     
-.fd_main 
-{
-     height: 30px;
-     width: 100%;
-     background-color: black;
-     color: aliceblue;
-}
-#fd li a 
-{
-     margin-left: 4px;
-}
-/*----member class start----*/
-
-.head 
-{
-     height: 90px;
-}
-/*----member class end----*/
-
- </style>
-
-  </head>
-     <body >
-          
-          <header>
-               <div class="head">
-                    <div id="logo" ><img src="{% static 'images\contanering.png' %}" ></div>
-                    
-                    <div id="pro_name"><h3> Partners Group Management</h3></div>
-                    
-               </div>
-       <nav>
-           <ul>
-              <li><a href='#' target='' class='z'>Home</a></li>
-              <li><a href='/data/' target='' class='z'>Manage</a></li>
-              <li><a href='/menu/' target='' class='z'>Menu Table</a></li>
-              <li><a href='/table/' target='' class='z'style='margin-right:20px'>All Entry</a></li>
-              
-           </ul>
-            </nav>
-          </header>
-           
+{% endblock %}
+{% block contaner %}
 <div >   
+<section class='menu_list'>
+<table border='1px' cellspacing='' cellpadding='' >
+     <tr>
+          <th class='active'>Days</th>
+          <th>Morning</th>
+          <th>Evening</th>
+     </tr>
+     <tr>
+          <th>Monday</th>
+          <td>Tameto</td>
+          <td>muga daal(Been lentil)</td>
+     </tr>
+     <tr>
+          <th>Tuesday</th>
+          <td>Sev</td>
+          <td>Allu,palak,gobhi</td>
+     </tr>
+     <tr>
+          <th>Wednesday</th>
+          <td>muga daal</td>
+          <td>chawal,Tuar daal</td>
+     </tr>
+     <tr>
+          <th>Thursday</th>
+          <td>Gilki,bhindi</td>
+          <td>Allu</td>
+     </tr>
+     <tr>
+          <th>Friday</th>
+          <td>Sev</td>
+          <td>muga daal</td>
+     </tr>
+     <tr>
+          <th>Saturday</th>
+          <td>allu</td>
+          <td>Khichadi</td>
+     </tr>
+     <tr>
+          <th>Sunday</th>
+          <td>daal bati,allu bade,allu parathe,bhaje</td>
+          <td>khichadi</td>
+     </tr> 
 
-<table border='2px' cellspacing='' cellpadding='' style='width:600px;height:400px;text-align:center;margin-top:60px'  >
-<form >
-   <h5><ul><li>Food Table</li></ul></h5>
-<tr><th>Days</th><th>Morning</th><th>Evening</th></tr>
- <tr><th>Monday</th><td>Tameto</td><td>muga daal(Been lentil)</td></tr>
-  <tr><th>Tuesday</th><td>Sev</td><td>Allu,palak,gobhi</td></tr>
-   <tr><th>Wednesday</th><td>muga daal</td><td>chawal,Tuar daal</td></tr>
-  <tr><th>Thursday</th><td>Gilki,bhindi</td><td>Allu</td></tr>
-   <tr><th>Friday</th><td>Sev</td><td>muga daal</td></tr>
-    <tr><th>Saturday</th><td>allu</td><td>Khichadi</td></tr>
-     <tr><th>Sunday</th><td>daal bati,allu bade,allu parathe,bhaje</td><td>khichadi</td></tr> 
-    </form>
  </table> 
 
  
-<table border='2px' cellspacing='' cellpadding='' style='width:600px;height:400px;text-align:center;margin-top:60px' >
-<form >
-   <h3><ul><li>let-bath and jhadu,birtan,pani Table</li></ul></h3>
-<tr><th>bartan,pani,jhadu,kachara</th><th>let-bath</th></tr>
-<tr><td>Rohit Verma</td><td>Rohit Verma</td></tr>
-  <tr><td>Gopal Prajapat</td><td>Gopal Prajapat</td></tr>
-   <tr><td>Goutam Yadav</td><td>Lucky Verma</td></tr>
-  <tr><td>Lucky Verma</td><td>Goutam Yadav</td></tr>
-   <tr><td>Yogesh Yadav</td><td>Yogesh Yadav</td></tr>
-    <tr><td>Gopal Gawli</td><td>Gopal Gawli</td></tr>
-    <tr><td>Sudhir Yadav</td><td>Sudhir Yadav</td></tr>
+<table border='1px' cellspacing='' cellpadding='' >
+     <tr>
+          <th>bartan,pani,jhadu,kachara</th>
+          <th>let-bath</th>
+     </tr>
+     <tr>
+          <td>Rohit Verma</td>
+          <td>Rohit Verma</td>
+     </tr>
+     <tr>
+          <td>Gopal Prajapat</td>
+          <td>Gopal Prajapat</td>
+     </tr>
+     <tr>
+          <td>Goutam Yadav</td>
+          <td>Lucky Verma</td>
+     </tr>
+     <tr>
+          <td>Lucky Verma</td>
+          <td>Goutam Yadav</td>
+     </tr>
+     <tr>
+          <td>Yogesh Yadav</td>
+          <td>Yogesh Yadav</td>
+     </tr>
+     <tr>
+          <td>Aadity Verma</td>
+          <td>Aadity Verma</td>
+     </tr>
+     <tr>
+          <td>Sudhir Yadav</td>
+          <td>Sudhir Yadav</td>
+     </tr>
      
-    </form>
+ 
  </table>
-
-
-         
+</section>
+ {% endblock %}
+{% comment %}          
         <footer>
           <div id='main_foot'>
                <div class='x'>
@@ -294,4 +153,4 @@ ul li
 </body> 
 </html>
 
-
+ {% endcomment %}

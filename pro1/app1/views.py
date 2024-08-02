@@ -10,10 +10,8 @@ from django.contrib.auth.hashers import make_password
 
 # Create your views here.
 def index(request):
-    return render(request,'index.html')
-
-def base(request):
-    return render(request,'base.html')
+    data = Profile.objects.all()
+    return render(request,'index.html',{'data':data})
 
 def entry(request): 
     if request.method == 'POST':
@@ -81,3 +79,8 @@ def all_product(request):
     data = Product.objects.all()
     total = Product.objects.aggregate(total_price=Sum('price'))
     return render(request,'table.html',{'data':data,'total':total})
+
+def delete_data(request,qk):
+    Product.objects.get(id=qk).delete()
+    messages.success(request,"Product Successfully Delete.")
+    return redirect('/all_entry/')

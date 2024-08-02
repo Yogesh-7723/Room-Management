@@ -1,20 +1,76 @@
 {% extends "base.html" %}
+{% load static %}
+{% block style %}
+
+ 
+.main_cont {
+    width:100%;
+    position:relative;
+    align-items:center;
+
+}
+
+.signin {
+    width:60%;
+    height:60vh;
+    margin:5rem 19rem;
+    border:1px solid red;
+}
+
+.main_cont .signin form {
+    width:90%;
+    height:90%;
+    font-size:18px;
+    margin:1rem 3rem;
+}
+
+.main_cont .signin form input {
+    width:20rem;
+    height:20px;
+    padding:1rem;
+    font-size:15px;
+
+    background-color:#fff;
+
+}
+
+.main_cont .signin form label {
+
+    font-size:20px;
+}
+
+.main_cont .signin form button {
+    font-size:15px;
+    padding:.5rem;
+    background-color:blue;
+    color:white;
+    border-radius:.5rem;
+}
+
+.main_cont .signin h1 {
+    font-size:25px;
+    text-decoration:none;
+
+}
+{% endblock %}
 {% block contaner %}
+<section class='main_cont'>
+    <section class='signin'>
+        <h1>User Login </h1>
+        <form action='/sign_in/' method='post'>
+        {% csrf_token %}
+        <label for='username'>Enter Your Name</label><br>
+        <input type='text' name='username' id='username' required>
+        <br>
 
-<input type='checkbox' name="mode" id="r"> Dark mode</button>
-
-<fieldset>
-<table border='0' collspacing='0' collpadding='0' >
-<h2 >Login</h2>
-<form action='/sign_in/' method='post'>
-    {% csrf_token %}
-<tr><th>User Name</th></tr>
-<tr><th><input type='text' name='username' id="username" required></th></tr>
-<tr><th>Password</th></tr>
-<tr><th><input type='password' name='password' id="password" required></th></tr>
-<tr><th><button type ='submit'  class='btn1' >Submit</button></th></tr>
-<tr><th>are you new member ?<a href="/signup/">Click here</a><th></tr>
-</form>
-</table>
-</fieldset>
+        <label for='password'>Enter Your Password</label><br>
+        <input type='password' name='password' id='password' required>
+        <br><br>
+        
+        <button type='submit'>Submit</button>
+        <br>
+        <span>are you new member ?</span><a href="/signup/">Click here</a>
+    </form>
+</section>
+</section>
 {% endblock %}
