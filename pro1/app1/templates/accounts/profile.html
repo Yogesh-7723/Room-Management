@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+{% load static %}
+{% block style %}
+
+ 
+.main_cont {
+    width:100%;
+    position:relative;
+    align-items:center;
+
+}
+
+.signin {
+    width:60%;
+    height:85vh;
+    margin:5rem 19rem;
+    border:1px solid red;
+}
+
+.main_cont .signin form {
+    width:90%;
+    height:90%;
+    font-size:18px;
+    margin:1rem 3rem;
+}
+
+.main_cont .signin form table {
+    text-align:center;
+}
+
+.main_cont .signin form input {
+    font-size:15px;
+    border-radius:5px;
+    background-color:#fff;
+
+}
+
+.main_cont .signin form table tr th label {
+    font-size:20px;
+} 
+.main_cont .signin form table tr td input {
+    font-size:15px;
+    height:1.5rem;
+    border-radius:5px;
+    background-color:#fff;
+
+}
+.main_cont .signin form button {
+    font-size:15px;
+    padding:.5rem;
+    background-color:blue;
+    color:white;
+    border-radius:.5rem;
+}
+
+.main_cont .signin h1 {
+    font-size:25px;
+    text-decoration:none;
+
+}
+{% endblock %}
+{% block contaner %}
+<section class='main_cont'>
+    <section class='signin'>
+        <h1>{{user.username}} </h1>
+        <form action='/profile/' method='post'>
+        {% csrf_token %}
+        {% if user.is_authenticated %}
+        <input type='hidden' name='username' id='username' value="{{user.username}}" width='1px' >
+        {% endif %}
+        <table>
+            <tr>
+                <th><label for='edu' >Enter Your Education</label></th>
+                <td><input type='text' name='edu' id='edu' ></td>
+            </tr>
+            <tr>
+                <th><label for='contact' >Enter Your Contact Number</label></th>
+                <td><input type='text' name='contact' id='contact' ></td>
+            </tr>
+            <tr>
+                <th><label for='gender'>Choice Gender</label></th>
+                <td>
+                    <input type='radio' name='gender' id='gender' value='male'>Male
+                    <input type='radio' name='gender' id='gender' value='female'>Female
+                    <input type='radio' name='gender' id='gender' value='onthers'>Others
+                </td>
+            </tr>
+            <tr>
+                <th><label for='dept'>Management Department</label></th>
+                <td>
+                    <select name='dept' id='dept'>
+                        <option value=''>------------------------------</option>
+                        <option value="Rent">RENT MANAGER</option>
+                        <option value="Bill">BILL MANAGER</option>
+                        <option value="Grocury">GROCURY MANAGER</option>
+                        <option value="Clean">CLEANING MANAGER</option>
+                        <option value="Member">MEMBER</option>
+                    </select> 
+                </td>
+            </tr>
+            <tr>
+                <th><label for='address'>Address</label></th>
+                <td><input type='text' name='address' id='address'></td>
+            </tr>
+            <tr>
+                <th><label for='image'>Upload Your Profile</label></th>
+                <td><input type='file' name='image' id='image' ></td>
+            </tr>
+
+        </table>
+        <br>
+        <br>
+        <button type='submit'>Save</button>
+          
+    </form>
+</section>
+</section>
+{% endblock %}

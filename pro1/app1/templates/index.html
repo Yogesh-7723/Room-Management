@@ -16,12 +16,15 @@
 </div>
 <h2>Member</h2>
 <div style='width:100%;height:280px;margin-top:30px'>
+  {% for i in data %}
 <div class="yogesh" >
-  
-  <img src="{% static 'images\yogi_img.jpeg' %}" alt=' ' id='b'>
-   <p><a href="#" target=" " class='y'>Yogesh Yadav</a></p>
-   <p><a href="#" target=" " class='ds'>Member</a></p>
+  {% if i.profile %}
+  <img src="{{i.profile.url}}" alt=' ' id='b'>
+  {% endif %}
+   <p><a href="#" target=" " class='y'>{{i.name}}</a></p>
+   <p><a href="#" target=" " class='ds'>{{i.dept}} Management</a></p>
 </div>
+{% endfor %}
 <div class="goutam">
   
   <img src="{% static 'images\goutam.jpg' %}" alt=' ' id='b'>

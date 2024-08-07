@@ -57,7 +57,7 @@
 <section class='main_cont'>
     <section class='signin'>
         <h1>User Sign-In </h1>
-        <form action='/sign_in/' method='post'>
+        <form action='/signup/' method='post'>
         {% csrf_token %}
         <label for='username'>Enter Your Name</label><br>
         <input type='text' name='username' id='username' required>
@@ -77,7 +77,7 @@
 
         <button type='submit'>Submit</button>
         <br>
-        <span>are you new member ?</span><a href="/signup/">Click here</a>
+        <span>you have already account ?</span><a href="/sign_in/">Click here</a>
     </form>
 </section>
 </section>

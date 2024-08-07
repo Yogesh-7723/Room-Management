@@ -23,9 +23,9 @@ class Profile(models.Model):
     name = models.ForeignKey(User,on_delete=models.CASCADE,max_length=50)
     education = models.CharField(max_length=50,null=True)
     dept = models.CharField(choices=DEPARTMENT_TYPES,max_length=7,default='Member')
-    gender = models.BooleanField()
-    address = models.TextField()
-    contact = models.IntegerField()
+    gender = models.CharField(max_length=10,default=None)
+    address = models.TextField(default=None)
+    contact = models.IntegerField(default=None)
     profile = models.ImageField(upload_to='profile/',blank=True)
 
 

@@ -31,11 +31,11 @@
            <ul>
             <li><a href='/' target='' class='z'>Home</a></li>
             <li><a href='/menu/' target='' class='z'>Menu Table</a></li>
-            <li><a href='/all_entry/' target='' class='z'style='margin-right:20px'>All Entry</a></li>
+            <li><a href='/all_entry/' target='' class='z'style='margin-right:18px'>All Entry</a></li>
             {% if user.is_authenticated %}
                   <li><a href='/data/' target='' class='z'>{{user.username}}</a></li>
                   <li><a href='/log_out/{{user.id}}/' target='' class='z'>Logout</a></li>
-                  <li><a href='/log_out/{{user.id}}/' target='' class='z'><i class="fa-brands fa-twitter"></i></a></li>
+                  <li><a href='/log_out/{{user.id}}/' target='' class='z'><i class="fa-solid fa-user"></i></a></li>
             {% else %}
                   <li><a href='/sign_in/' target='' class='z'>sign-in</a></li>
                   <li><a href='/signup/' target='' class='z'>sign-up</a></li>

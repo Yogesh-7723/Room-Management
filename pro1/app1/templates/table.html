@@ -36,7 +36,11 @@ table tr th,td{
             {% endfor %}
             <tr>
                <th colspan='2'>Total Amount</th>
-               <th>{{total.total_price}}</th>
+               <th>{{total.total_amount}}</th>
+            </tr>
+            <tr>
+               <th colspan='2'>Current Month Total</th>
+               <th>{{current.current_month}}</th>
             </tr>
             </table>
 {% endblock %}
