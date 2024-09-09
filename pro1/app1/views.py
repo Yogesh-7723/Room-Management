@@ -10,7 +10,9 @@ from app1.forms import ProductForm
 from django.contrib import messages
 from django.contrib.auth.hashers import make_password
 from rest_framework import viewsets
-
+from .serializers import ProductSerialize
+from rest_framework_simplejwt.authentication import JWTTokenUserAuthentication
+from rest_framework.permissions import IsAuthenticated
 # Create your views here.
 def index(request):
     if request.method=='POST':
@@ -121,3 +123,11 @@ def delete_data(request,qk):
     messages.success(request,"Product Successfully Delete.")
     return redirect('/profile/')
 
+# JWT functionality write here...
+
+class ProductView(viewsets.ModelViewSet):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerialize
+    authentication_classes = [JWTTokenUserAuthentication]
+    permission_classes = [IsAuthenticated]
+    # lookup_field = 'pk'
