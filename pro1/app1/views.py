@@ -6,13 +6,21 @@ from datetime import datetime
 from django.contrib.auth.models import User
 from django.contrib.auth import  logout, authenticate, login
 from django.http import HttpResponse
+from app1.forms import ProductForm
 from django.contrib import messages
 from django.contrib.auth.hashers import make_password
+from rest_framework import viewsets
 
 # Create your views here.
 def index(request):
-    data = Profile.objects.all()
-    return render(request,'index.html',{'data':data})
+    if request.method=='POST':
+        fm = ProductForm(request.data)
+        if fm.is_valid():
+            fm.save()
+            return redirect('/')
+    data = Profile.objects.order_by("?")
+    fm = ProductForm
+    return render(request,'index.html',{'data':data,'fm':fm})
 
 
 def signup(request):
@@ -70,7 +78,16 @@ def profile(request):
         address = request.POST['address']
         image = request.FILES.get('image')
         print(edu,contact,user,gender,dept,address,image)
-    return render(request,"accounts/profile.html")
+    else:
+        user = request.user
+        data = Profile.objects.get(name=user)
+    product = Product.objects.filter(user=user)
+    total = Product.objects.filter(user=user).aggregate(total_amount=Sum('price'))
+    current = Product.objects.filter(date=datetime.today(),user=user).aggregate(current_month = Sum('price'))
+    print(total,current)
+    return render(request,"accounts/profile.html",{'data':data,'product':product,'current':current,'total':total})
+    
+    
 
 
 def data(request):
@@ -102,5 +119,5 @@ def all_product(request):
 def delete_data(request,qk):
     Product.objects.get(id=qk).delete()
     messages.success(request,"Product Successfully Delete.")
-    return redirect('/all_entry/')
+    return redirect('/profile/')
 

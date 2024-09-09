@@ -2,6 +2,19 @@
 {% load static %}   
 {% block title %}Home{% endblock %}
 {% block contaner %}
+{% block style %}
+.add_prod {
+  width: 100%;
+  text-align:center;
+  
+}
+.add_prod .sub_prod {
+  width: 30%;
+  margin-left:10rem;
+  margin-top:5rem;
+  border:1px solid black;
+}
+{% endblock style %}
 <div class="mainContainer">
      <h1>Memory Never Die :-</h1>
      <!-- create a ul tag (unordered list) with a class of "riot-slider'" -->
@@ -15,9 +28,9 @@
      </ul>
 </div>
 <h2>Member</h2>
-<div style='width:100%;height:280px;margin-top:30px'>
+<div class="member">
   {% for i in data %}
-<div class="yogesh" >
+<div class="sub_member" >
   {% if i.profile %}
   <img src="{{i.profile.url}}" alt=' ' id='b'>
   {% endif %}
@@ -25,49 +38,19 @@
    <p><a href="#" target=" " class='ds'>{{i.dept}} Management</a></p>
 </div>
 {% endfor %}
-<div class="goutam">
-  
-  <img src="{% static 'images\goutam.jpg' %}" alt=' ' id='b'>
-  <p><a href="#" target=" " class='y'>Goutam Yadav</a></p>
-  <p><a href="#" target=" " class='ds'>Bill Management</a></p>
-</div>
-<div class="gopalp">
-  
-   <img src="{% static 'images\gopal1.jpeg' %}" alt=' ' id='b'>
-    <p><a href="#" target=" " class='y'>Gopal Prajapat</a></p>
-    <p><a href="#" target=" " class='ds'>Cleaning Menegment</a></p>
-</div>
-<div class="lucky">
-  
-<img src="{% static 'images\lucky1.jpg' %}" alt=' ' id='b'>
-<p><a href="#" target=" " class='y'>Lucky Verma</a></p>
-<p><a href="#" target=" " class='ds'>Grocery Management</a></p>
-</div>
-</div>
-
-<div style='width:100%;height:300px'>
-<div class="pramod">
-  
-     <img src="{% static 'images\gopalg.jpg' %}" alt=' ' id='b'>
-     <p><a href="#" target=" " class='y'>Pramod Gavli</a></p>
-     <p><a href="#" target=" " class='ds'>Member</a></p>
+</div>  
+<br>
+{% if user.is_authenticated %}
+<div class='add_prod'>
+  <div class='sub_prod'>
+  <h1>New Product</h1>
+  <form action=' ' method='post'>
+    {% csrf_token %}
+    {{fm.as_p}}
+    <button type='submit'>submit</button>
+  </form>
   </div>
-  <div class="rohit">
-     
-      <img src="{% static 'images\rohit.jpg' %}" alt=' ' id='b'>
-       <p><a href="#" target=" " class='y'>Rohit Verma</a></p>
-       <p><a href="#" target=" " class='ds'>Rent Management</a></p>
-  </div>
-  <div class="sudhir">
-     
-     <img src="{% static 'images\sudhir.jpg' %}" alt=' ' id='b'>
-     <p><a href="#" target=" " class='y'>Sudhir Yadav</a></p>
-     <p><a href="#" target=" " class='ds'>Member</a></p>
-  </div>
-
 </div>
-
-          
-          
+{% endif %}
 {% endblock %}
             

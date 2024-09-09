@@ -12,14 +12,14 @@
 
 .signin {
     width:60%;
-    height:85vh;
+    height:105vh;
     margin:5rem 19rem;
     border:1px solid red;
 }
 
 .main_cont .signin form {
     width:90%;
-    height:90%;
+    height:100%;
     font-size:18px;
     margin:1rem 3rem;
 }
@@ -58,29 +58,51 @@
     text-decoration:none;
 
 }
+.profile {
+    border-radius:50%;
+}
+.item {
+    width:100%;
+    text-align:center;
+    
+}
+table {
+    width:100%;
+    text-align:center;
+    font-size:1.3rem;
+}
+table td,th {
+    padding:.2rem;
+}
+.item h1 {
+    text-decoration:none;
+    font-size:25px;
+    color:blue;
+}
 {% endblock %}
 {% block contaner %}
 <section class='main_cont'>
     <section class='signin'>
-        <h1>{{user.username}} </h1>
         <form action='/profile/' method='post'>
         {% csrf_token %}
-        {% if user.is_authenticated %}
-        <input type='hidden' name='username' id='username' value="{{user.username}}" width='1px' >
+        {% if data.profile %}
+        <img src="{{data.profile.url}}" alt='blank' class='profile' height='150px'>
         {% endif %}
+        <h1>{{user.username}} </h1>
+        <input type='hidden' name='username' id='username' value="{{user.username}}" width='1px' >
         <table>
             <tr>
                 <th><label for='edu' >Enter Your Education</label></th>
-                <td><input type='text' name='edu' id='edu' ></td>
+                <td><input type='text' name='edu' id='edu' value="{{data.education}}"></td>
             </tr>
             <tr>
                 <th><label for='contact' >Enter Your Contact Number</label></th>
-                <td><input type='text' name='contact' id='contact' ></td>
+                <td><input type='text' name='contact' id='contact'  value="{{data.contact}}"></td>
             </tr>
             <tr>
                 <th><label for='gender'>Choice Gender</label></th>
                 <td>
-                    <input type='radio' name='gender' id='gender' value='male'>Male
+                    <input type='radio' name='gender' id='gender' value='male' checked=True>Male
                     <input type='radio' name='gender' id='gender' value='female'>Female
                     <input type='radio' name='gender' id='gender' value='onthers'>Others
                 </td>
@@ -88,8 +110,12 @@
             <tr>
                 <th><label for='dept'>Management Department</label></th>
                 <td>
-                    <select name='dept' id='dept'>
-                        <option value=''>------------------------------</option>
+                    <select name='dept' id='dept' >
+                        {% if data.dept %}
+                        <option value="{{data.dept}}">{{data.dept|upper}} MANAGER</option>
+                        {% else %}
+                        <option value=''>----------------------------</option>
+                        {% endif %}
                         <option value="Rent">RENT MANAGER</option>
                         <option value="Bill">BILL MANAGER</option>
                         <option value="Grocury">GROCURY MANAGER</option>
@@ -100,11 +126,11 @@
             </tr>
             <tr>
                 <th><label for='address'>Address</label></th>
-                <td><input type='text' name='address' id='address'></td>
+                <td><input type='text' name='address' id='address' value="{{data.address}}"></td>
             </tr>
             <tr>
                 <th><label for='image'>Upload Your Profile</label></th>
-                <td><input type='file' name='image' id='image' ></td>
+                <td><input type='files' name='profile' id='profile' value="{{data.profile}}"  ></td>
             </tr>
 
         </table>
@@ -114,5 +140,32 @@
           
     </form>
 </section>
+<div class='item'>
+<h1>Grocery Management</h1>
+<table border='2px' cellspacing='' cellpadding='' width='50%'>
+  <tr>
+     <th>Product</th>
+     <th>Price</th>
+     <th>Date</th>
+     <th>Edit</th>
+  </tr>
+  <tr>
+     {% for i in product %}
+     <td>{{i.item}}</td>
+     <td>{{i.price}}</td>
+     <td>{{i.date}}</td>
+     <td ><a href="/delete/{{i.id}}">Delete</a></td>
+  </tr>
+  {% endfor %}
+  <tr>
+    <th >Total Amount</th>
+    <th>{{total.total_amount}}</th>
+ </tr>
+ <tr>
+    <th >Current Month Total</th>
+    <th>{{current.current_month}}</th>
+ </tr>
+</table>
+</div>
 </section>
 {% endblock %}

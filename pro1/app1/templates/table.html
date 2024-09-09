@@ -23,7 +23,6 @@ table tr th,td{
                <th>Product</th>
                <th>Price</th>
                <th>Date</th>
-               <th>Edit</th>
             </tr>
             <tr>
                {% for i in data %}
@@ -31,7 +30,6 @@ table tr th,td{
                <td>{{i.item}}</td>
                <td>{{i.price}}</td>
                <td>{{i.date}}</td>
-               <td ><a href="/delete/{{i.id}}">Delete</a></td>
             </tr>
             {% endfor %}
             <tr>
