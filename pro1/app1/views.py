@@ -79,7 +79,7 @@ def profile(request):
         dept = request.POST['dept']
         address = request.POST['address']
         image = request.FILES.get('image')
-        print(edu,contact,user,gender,dept,address,image)
+        
     else:
         user = request.user
         data = Profile.objects.get(name=user)
@@ -89,7 +89,7 @@ def profile(request):
     print(total,current)
     return render(request,"accounts/profile.html",{'data':data,'product':product,'current':current,'total':total})
     
-    
+
 
 
 def data(request):
@@ -97,7 +97,7 @@ def data(request):
         user = request.user
         item = request.POST['item']
         price = request.POST['price']
-        if user !='' and item != '' and price!='':
+        if user !='' or item != '' or price!='':
             print("Enter Every Values")
         if user.is_authenticated:
             Product.objects.create(user=user,item=item,price=price)

@@ -30,27 +30,35 @@
 <h2>Member</h2>
 <div class="member">
   {% for i in data %}
-<div class="sub_member" >
+  <div class="sub_member" >
   {% if i.profile %}
-  <img src="{{i.profile.url}}" alt=' ' id='b'>
+    <img src="{{i.profile.url}}" alt=' ' id='b'>
   {% endif %}
-   <p><a href="#" target=" " class='y'>{{i.name}}</a></p>
-   <p><a href="#" target=" " class='ds'>{{i.dept}} Management</a></p>
-</div>
-{% endfor %}
-</div>  
+  <p><a href="#" target=" " class='y'>{{i.name}}</a></p>
+  <p><a href="#" target=" " class='ds'>{{i.dept}} Management</a></p>
+  </div>
+  {% endfor %}
+</div> 
+{% endblock %} 
 <br>
-{% if user.is_authenticated %}
+
+{% comment %} {% if user.is_authenticated %}
+{% block addprod %}
 <div class='add_prod'>
   <div class='sub_prod'>
   <h1>New Product</h1>
-  <form action=' ' method='post'>
+  <form action='/add_product/' method='post'>
     {% csrf_token %}
     {{fm.as_p}}
     <button type='submit'>submit</button>
   </form>
   </div>
 </div>
-{% endif %}
 {% endblock %}
+{% endif %}
+           {% endcomment %}
+          
+
+
+
             

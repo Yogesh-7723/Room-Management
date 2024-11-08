@@ -33,12 +33,13 @@
             <li><a href='/menu/' target='' class='z'>Menu Table</a></li>
             <li><a href='/all_entry/' target='' class='z'style='margin-right:18px'>All Product</a></li>
             {% if user.is_authenticated %}
-                  <li><a href='/profile/' target='' class='z'>{{user.username}}</a></li>
-                  <li><a href='/log_out/{{user.id}}/' target='' class='z'>Logout</a></li>
-                  <li><a href='/log_out/{{user.id}}/' target='' class='z'><i class="fa-solid fa-user"></i></a></li>
+               <li><a href='/add_product/' target='' class='z'>Add Product</a></li>
+               <li><a href='/profile/' target='' class='z'>{{user.username}}</a></li>
+               <li><a href='/log_out/{{user.id}}/' target='' class='z'>Logout</a></li>
+               <li><a href='/profile/' target='' class='z'><i class="fa-solid fa-user"></i></a></li>
             {% else %}
-                  <li><a href='/sign_in/' target='' class='z'>sign-in</a></li>
-                  <li><a href='/signup/' target='' class='z'>sign-up</a></li>
+               <li><a href='/sign_in/' target='' class='z'>sign-in</a></li>
+               <li><a href='/signup/' target='' class='z'>sign-up</a></li>
             {% endif %}
            </ul>
             </nav>
@@ -46,6 +47,10 @@
           
           {% block contaner %}
           
+          
+          {% endblock %}
+
+          {% block addprod %}
           
           {% endblock %}
           <br>
@@ -60,8 +65,8 @@
                </div>
                <div class='x'><div style='font-size:20px;text-align:center'>Developer</div>
                <div id="dev_foot"> My name is Yogesh yadav from<br> khargone distric M.P.
-                I am  purshing<br> my engineering by B.tech Electronics and
-                communication branch from<br> svce indore. 
+                I have complete<br> my gratuation B.tech with Electronics and
+                communication branch from<br> Swami Vivekanand Collge of Engineering Indore. 
                </div>        
                 </div>
                <div class='x'><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2809.3234892625574!2d75.87563517115483!3d22.67390227581232!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3962fc95e4566a19%3A0x721053fbd22a72e4!2z4KS44KSC4KSkIOCkqOCkl-CksCDgpI_gpLXgpYfgpKjgpY3gpK_gpYIsIOCkuOCkguCkpCDgpKjgpJfgpLAsIOCkh-CkqOCljeCkpuCljOCksCwg4KSu4KSn4KWN4KSvIOCkquCljeCksOCkpuClh-CktiA0NTIwMjA!5e0!3m2!1shi!2sin!4v1681233279667!5m2!1shi!2sin"
