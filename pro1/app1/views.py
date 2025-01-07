@@ -51,9 +51,7 @@ def signin(request):
     if request.method == 'POST':
         name = request.POST['username']
         pwd = request.POST.get('password')
-        print(name,pwd)
         user = authenticate(username=name,password=pwd)
-        print(user)
         if user is not None:
             login(request,user)
             print("login Successfull")
@@ -84,9 +82,10 @@ def profile(request):
         user = request.user
         data = Profile.objects.get(name=user)
     product = Product.objects.filter(user=user)
+    # total amount of expenses
     total = Product.objects.filter(user=user).aggregate(total_amount=Sum('price'))
+    # sum of current month expenses
     current = Product.objects.filter(date=datetime.today(),user=user).aggregate(current_month = Sum('price'))
-    print(total,current)
     return render(request,"accounts/profile.html",{'data':data,'product':product,'current':current,'total':total})
     
 
@@ -97,8 +96,8 @@ def data(request):
         user = request.user
         item = request.POST['item']
         price = request.POST['price']
-        if user !='' or item != '' or price!='':
-            print("Enter Every Values")
+        if user =='' or item == '' or price=='':
+            messages.success(request,"Every Fields Required !")
         if user.is_authenticated:
             Product.objects.create(user=user,item=item,price=price)
             messages.success(request,"Item Successfully Add !")
