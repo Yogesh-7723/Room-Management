@@ -1,7 +1,6 @@
 {% extends "base.html" %}
 {% load static %}   
 {% block title %}Home{% endblock %}
-{% block contaner %}
 {% block style %}
 .add_prod {
   width: 100%;
@@ -15,6 +14,8 @@
   border:1px solid black;
 }
 {% endblock style %}
+{% block contaner %}
+
 <div class="mainContainer">
      <h1>Memory Never Die :-</h1>
      <!-- create a ul tag (unordered list) with a class of "riot-slider'" -->
@@ -42,21 +43,25 @@
 {% endblock %} 
 <br>
 
-{% comment %} {% if user.is_authenticated %}
+{% if user.is_authenticated %}
 {% block addprod %}
 <div class='add_prod'>
   <div class='sub_prod'>
   <h1>New Product</h1>
-  <form action='/add_product/' method='post'>
+  <form action='  ' method='post' novalidate>
     {% csrf_token %}
     {{fm.as_p}}
     <button type='submit'>submit</button>
   </form>
+  {% if messages %}
+  {% for message in messages %}
+  <p style='background-color:red'>{{message}}</p>
+  {% endfor %}{% endif %}
   </div>
 </div>
 {% endblock %}
 {% endif %}
-           {% endcomment %}
+           
           
 
 

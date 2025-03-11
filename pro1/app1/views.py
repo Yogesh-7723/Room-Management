@@ -15,14 +15,21 @@ from rest_framework_simplejwt.authentication import JWTTokenUserAuthentication
 from rest_framework.permissions import IsAuthenticated
 # Create your views here.
 def index(request):
-    if request.method=='POST':
-        fm = ProductForm(request.data)
-        if fm.is_valid():
-            fm.save()
-            return redirect('/')
-    data = Profile.objects.order_by("?")
-    fm = ProductForm
-    return render(request,'index.html',{'data':data,'fm':fm})
+    if request.user.is_authenticated:
+        if request.method=='POST':
+            user = request.user
+            item = request.POST['item']
+            price = request.POST['price']
+            if user =='' or item == '' or price=='':
+                messages.warning(request,"Enter Every Values")
+                return redirect('/')
+            else:
+                Product.objects.create(user=user,item=item,price=price)
+                messages.success(request,"Item Successfully Add !")
+                return redirect('/')
+        data = Profile.objects.order_by("?")
+        fm = ProductForm(initial={'user':request.user})
+        return render(request,'index.html',{'data':data,'fm':fm})
 
 
 def signup(request):
@@ -51,12 +58,11 @@ def signin(request):
     if request.method == 'POST':
         name = request.POST['username']
         pwd = request.POST.get('password')
-        print(name,pwd)
         user = authenticate(username=name,password=pwd)
         print(user)
         if user is not None:
             login(request,user)
-            print("login Successfull")
+            messages.success(request,"login Successfull")
             return redirect('/')
         else:
             messages.error(request,"Invalid username and password")
@@ -71,41 +77,32 @@ def log_out(request,qk):
     return redirect('/sign_in/')
 
 def profile(request):
-    if request.method=='POST':
-        edu = request.POST['edu']
-        contact = request.POST['contact']
-        user = request.POST.get('username')
-        gender = request.POST['gender']
-        dept = request.POST['dept']
-        address = request.POST['address']
-        image = request.FILES.get('image')
-        
-    else:
+    if request.user.is_authenticated:    
         user = request.user
         data = Profile.objects.get(name=user)
-    product = Product.objects.filter(user=user)
-    total = Product.objects.filter(user=user).aggregate(total_amount=Sum('price'))
-    current = Product.objects.filter(date=datetime.today(),user=user).aggregate(current_month = Sum('price'))
-    print(total,current)
-    return render(request,"accounts/profile.html",{'data':data,'product':product,'current':current,'total':total})
+        product = Product.objects.filter(user=user)
+        total = Product.objects.filter(user=user).aggregate(total_amount=Sum('price'))
+        current = Product.objects.filter(date=datetime.today(),user=user).aggregate(current_month = Sum('price'))
+        return render(request,"accounts/profile.html",{'data':data,'product':product,'current':current,'total':total})
     
 
 
 
 def data(request):
-    if request.method == 'POST':
-        user = request.user
-        item = request.POST['item']
-        price = request.POST['price']
-        if user !='' or item != '' or price!='':
-            print("Enter Every Values")
-        if user.is_authenticated:
-            Product.objects.create(user=user,item=item,price=price)
-            messages.success(request,"Item Successfully Add !")
-            return redirect('/add_product/')
+    if request.user.is_authenticated:
+        if request.method == 'POST':
+            user = request.user
+            item = request.POST['item']
+            price = request.POST['price']
+            if user =='' or item == '' or price == '':
+                messages.warning(request,"Enter Every Values")
+            else:
+                Product.objects.create(user=user,item=item,price=price)
+                messages.success(request,"Item Successfully Add !")
+                return redirect('/add_product/')
     
-    u_data = User.objects.all()
-    return render(request,'data.html',{'u_data':u_data})
+        u_data = User.objects.all()
+        return render(request,'data.html',{'u_data':u_data})
 
 def menu(request):
     return render(request,"menu.html")
